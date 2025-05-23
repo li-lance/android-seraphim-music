@@ -14,7 +14,7 @@
         <lazy>true</lazy>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_DIR}/PokemonLogs.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${LOG_DIR}/SeraphimMusicLogs.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <maxFileSize>5MB</maxFileSize>
             <maxHistory>15</maxHistory>
             <totalSizeCap>8GB</totalSizeCap>

@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "android-seraphim-music"
-//include(":app")
+include(":app")
 //include(":shared")
 //include(":utils")
 //include(":core:ui",":core:permission")

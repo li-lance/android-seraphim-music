@@ -10,7 +10,7 @@ plugins {
 }
 android {
     defaultConfig {
-        applicationId = "com.seraphim.pokemon"
+        applicationId = "com.seraphim.music"
         versionCode = 8
         versionName = "0.1.2" // X.Y.Z; X = Major, Y = minor, Z = Patch level
         multiDexEnabled = true
@@ -25,11 +25,11 @@ android {
             isIncludeAndroidResources = true
         }
     }
-    namespace = "com.seraphim.pokemon"
+    namespace = "com.seraphim.music"
 }
 dependencies {
-    implementation(project(":core:ui"))
-    implementation(project(":shared"))
+//    implementation(project(":core:ui"))
+//    implementation(project(":shared"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
