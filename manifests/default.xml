@@ -9,5 +9,5 @@
     <project name="build-logic.git" path="build-logic" revision="master"/>
     <project name="gradle.git" path="gradle" revision="master"/>
     <project name="utils.git" path="utils" revision="master"/>
-    <project name="permissions.git" path="app" revision="master"/>
+    <project name="permissions.git" path="permissions" revision="master" />
 </manifest>
