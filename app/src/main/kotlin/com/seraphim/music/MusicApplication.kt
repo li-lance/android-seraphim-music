@@ -20,7 +20,7 @@ class MusicApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@MusicApplication)
-            modules(networkModule + sharedCommonModule + appModule+ authModule)
+            modules(authModule + networkModule + sharedCommonModule + appModule)
         }
     }
 }

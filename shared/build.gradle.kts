@@ -38,6 +38,7 @@ kotlin {
 //            kotlin.srcDir("build/openapi/src/main/kotlin")
         }
         androidMain.dependencies {
+            implementation(project(":core:auth"))
             implementation(libs.ktor.client.okhttp)
         }
         iosMain.dependencies {

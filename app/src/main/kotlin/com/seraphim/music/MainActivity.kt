@@ -12,7 +12,7 @@ import com.seraphim.domain.login.AuthResult
 import com.seraphim.music.shared.common.KEY_AUTH_ACCESS_TOKEN
 import com.seraphim.music.shared.mmkv.safeKvGet
 import com.seraphim.music.shared.network.bff.toBffException
-import com.seraphim.music.shared.repository.ArtistRepository
+import com.seraphim.music.shared.repository.UserRepository
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
-    private val repository by inject<ArtistRepository>()
+    private val repository by inject<UserRepository>()
     private val authManager by inject<AuthManager>()
     private val authResult by inject<AuthResult>()
     private lateinit var authLauncher: ActivityResultLauncher<Intent>
@@ -35,19 +35,20 @@ class MainActivity : ComponentActivity() {
 //            }
 //        }
         lifecycleScope.launch {
-            repository.searchArtist("Taylor")
+            repository.user()
                 .catch {
                     Napier.e {
                         it.toBffException().message ?: "Unknown error"
                     }
                 }
                 .collectLatest {
-
+                    Napier.d("User data: $it")
                 }
         }
         if (safeKvGet(KEY_AUTH_ACCESS_TOKEN,"").isEmpty()){
             fetchAuthResult()
         }else{
+            Napier.e { "token:"+safeKvGet(KEY_AUTH_ACCESS_TOKEN,"") }
             Napier.e("Access token already exists, skipping authentication")
         }
 //        SeraphimPermissionsUtils.checkPermissions(

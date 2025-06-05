@@ -9,6 +9,6 @@ import org.koin.dsl.module
 
 val authModule = module {
     single<TokenProvider> { TokenProviderImpl() }
-    single { AuthManager(androidContext()) }
+    single { AuthManager(androidContext(),get()) }
     single { AuthResult(get(), get()) }
 }
