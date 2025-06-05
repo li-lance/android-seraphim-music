@@ -22,9 +22,10 @@ dependencyResolutionManagement {
 
 rootProject.name = "android-seraphim-music"
 include(":app")
+include(":domain:login")
 include(":shared")
 include(":utils")
-//include(":core:ui",":core:permission")
+include(":core:permissions",":core:auth")
 //include(":domain:scaffold:ui")
 
 check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {

@@ -14,6 +14,7 @@ android {
         versionCode = 8
         versionName = "0.1.2" // X.Y.Z; X = Major, Y = minor, Z = Patch level
         multiDexEnabled = true
+
     }
     packaging {
         resources {
@@ -28,8 +29,10 @@ android {
     namespace = "com.seraphim.music"
 }
 dependencies {
-//    implementation(project(":core:ui"))
-//    implementation(project(":shared"))
+    implementation(project(":core:permissions"))
+    implementation(project(":core:auth"))
+    implementation(project(":shared"))
+    implementation(project(":domain:login"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
@@ -45,6 +48,8 @@ dependencies {
     ksp(libs.destinations.ksp)
     implementation(libs.destinations.bottom.sheet)
     implementation(libs.process.phoenix)
+    implementation(libs.napier.loggger)
+    implementation(libs.mmkv.kotlin)
 }
 baselineProfile {
     // Don't build on every iteration of a full assemble.

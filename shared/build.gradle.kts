@@ -7,7 +7,7 @@ plugins {
 //    alias(libs.plugins.skie)
 }
 android {
-    namespace = "com.seraphim.shared"
+    namespace = "com.seraphim.music.shared"
     compileSdk = project.findProperty("compileSdk")?.toString()?.toInt()
 }
 kotlin {
@@ -18,7 +18,7 @@ kotlin {
         }
         commonMain {
             dependencies {
-                implementation(project(":utils"))
+//                implementation(project(":utils"))
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.kotlinx.datetime)
                 implementation(libs.kotlinx.serialization.json)
@@ -32,9 +32,10 @@ kotlin {
                 implementation(libs.sqlite.bundled)
                 implementation(libs.slf4j.api)
                 implementation(libs.androidx.paging.common)
-
+                implementation(libs.mmkv.kotlin)
+                implementation(libs.napier.loggger)
             }
-            kotlin.srcDir("build/openapi/src/main/kotlin")
+//            kotlin.srcDir("build/openapi/src/main/kotlin")
         }
         androidMain.dependencies {
             implementation(libs.ktor.client.okhttp)
