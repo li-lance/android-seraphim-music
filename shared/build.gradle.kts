@@ -35,7 +35,7 @@ kotlin {
                 implementation(libs.mmkv.kotlin)
                 implementation(libs.napier.loggger)
             }
-//            kotlin.srcDir("build/openapi/src/main/kotlin")
+            kotlin.srcDir("build/openapi/src/main/kotlin")
         }
         androidMain.dependencies {
             implementation(project(":core:auth"))

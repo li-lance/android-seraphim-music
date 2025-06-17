@@ -3,24 +3,22 @@ package com.seraphim.music
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.lifecycle.lifecycleScope
+import androidx.navigation.compose.rememberNavController
 import com.seraphim.domain.login.AuthManager
 import com.seraphim.domain.login.AuthResult
 import com.seraphim.music.shared.common.KEY_AUTH_ACCESS_TOKEN
 import com.seraphim.music.shared.mmkv.safeKvGet
-import com.seraphim.music.shared.network.bff.toBffException
 import com.seraphim.music.shared.repository.UserRepository
+import com.seraphim.music.ui.pages.MainScreen
+import com.seraphim.music.ui.theme.SeraphimMusicTheme
 import io.github.aakira.napier.Napier
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
-    private val repository by inject<UserRepository>()
     private val authManager by inject<AuthManager>()
     private val authResult by inject<AuthResult>()
     private lateinit var authLauncher: ActivityResultLauncher<Intent>
@@ -29,21 +27,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 //        window.edgeToEdgeWindowInsetsControllerCompat()
-//        setContent {
-//            MusicTheme {
-//                MainScreen()
-//            }
-//        }
-        lifecycleScope.launch {
-            repository.user()
-                .catch {
-                    Napier.e {
-                        it.toBffException().message ?: "Unknown error"
-                    }
-                }
-                .collectLatest {
-                    Napier.d("User data: $it")
-                }
+        setContent {
+            val navController = rememberNavController()
+            SeraphimMusicTheme {
+                MainScreen(navController)
+            }
         }
         if (safeKvGet(KEY_AUTH_ACCESS_TOKEN,"").isEmpty()){
             fetchAuthResult()

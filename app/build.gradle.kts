@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 android {
+    namespace = "com.seraphim.music"
     defaultConfig {
         applicationId = "com.seraphim.music"
         versionCode = 8
@@ -26,7 +27,9 @@ android {
             isIncludeAndroidResources = true
         }
     }
-    namespace = "com.seraphim.music"
+    kotlinOptions {
+        freeCompilerArgs += "-Xopt-in=androidx.compose.material3.ExperimentalMaterial3Api"
+    }
 }
 dependencies {
     implementation(project(":core:permissions"))
