@@ -18,7 +18,7 @@ kotlin {
         }
         commonMain {
             dependencies {
-//                implementation(project(":utils"))
+                implementation(project(":utils"))
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.kotlinx.datetime)
                 implementation(libs.kotlinx.serialization.json)
